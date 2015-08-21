@@ -10,6 +10,9 @@
   <div id="banner">
       <%= image_tag("logo.png") %>
       <%= @page_title || "Pragmatic Bookshelf" %>
+      <div id="time">
+        Visited: <%= Time.now.strftime("%d/%m/%Y %H:%M") %>
+      </div>
   </div>
 
   <div id="columns">
