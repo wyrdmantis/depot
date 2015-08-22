@@ -8,7 +8,12 @@
     padding-bottom: 0.5em;
     font: 150% sans-serif;
     color: #226;
-    border-bottom: 3px dotted #77d;
+    border-bottom: 3px solid #77d;
+  }
+
+  .counter {
+    font: 120% sans-serif;
+    color: red;
   }
 
   .entry {
@@ -37,6 +42,10 @@
        margin-left: 100px;
        margin-top: 0.5em;
        margin-bottom: 0.8em;
+    }
+
+    form, div {
+       display: inline;
     }
 
     .price {
