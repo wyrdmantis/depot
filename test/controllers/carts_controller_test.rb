@@ -47,4 +47,10 @@ class CartsControllerTest < ActionController::TestCase
 
     assert_redirected_to store_path
   end
+
+  test "should destroy cart through AJAX" do
+    xhr :post, :destroy, id: @cart
+
+    assert_response :success
+  end
 end
