@@ -21,6 +21,18 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal ["has already been taken"], duplicated.errors[:title]
   end
 
+  test "image url must be unique" do
+    dup_url = products(:ruby).image_url
+    product = Product.new(
+      title: "First book",
+      description: "A very long long description",
+      price: 10,
+      image_url: dup_url
+    )
+    assert !product.save
+    assert_equal "has already been taken", product.errors[:image_url].join
+  end
+
   test "description must be 10 or more characters long" do 
     assert products(:invalid_description).invalid?
   end
