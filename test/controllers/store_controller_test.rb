@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class StoreControllerTest < ActionController::TestCase
+  fixtures :products
+
   test "should get index" do
     get :index
     assert_response :success
@@ -9,5 +11,4 @@ class StoreControllerTest < ActionController::TestCase
     assert_select 'h3', 'A book'
     assert_select '.price', /\€[,\d]+\.\d\d/
   end
-
 end
