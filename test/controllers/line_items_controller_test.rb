@@ -59,4 +59,16 @@ class LineItemsControllerTest < ActionController::TestCase
 
     assert_redirected_to store_url
   end
+
+  test "should destroy line_item through AJAX" do
+    @cart.line_items << @line_item
+    xhr :post, :destroy, id: @line_item
+
+    assert_response :success
+
+    assert_select_jquery :html, '#cart' do
+      assert_select 'tr', 1
+      assert_select 'tr td.total_cell', /0.00/
+    end
+  end
 end
