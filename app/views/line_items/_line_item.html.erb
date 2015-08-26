@@ -7,5 +7,6 @@
   <td><%= line_item.quantity %>&times;</td>
   <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
   <td class="remove_item"><%= button_to 'Remove', line_item, method: :delete, remote: true, data: { confirm: "Are you sure?" } %></td>
+  <td class="decrement"><%= button_to 'Decrement', decrement_line_item_path(line_item), method: :post %></td>
 </tr>
 
