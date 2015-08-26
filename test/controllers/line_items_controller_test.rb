@@ -71,4 +71,20 @@ class LineItemsControllerTest < ActionController::TestCase
       assert_select 'tr td.total_cell', /0.00/
     end
   end
+
+  test "should destroy line_item when quantity is 1" do
+    assert_difference('LineItem.count', -1) do
+      post :decrement, id: @line_item
+    end
+
+    assert_redirected_to store_url
+  end
+
+  test "should destroy line_item when quantity is 1 through AJAX" do
+    assert_difference('LineItem.count', -1) do
+      xhr :post, :decrement, id: @line_item
+    end
+
+    assert_response :success
+  end
 end
