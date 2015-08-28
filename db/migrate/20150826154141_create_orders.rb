@@ -1,5 +1,5 @@
 class CreateOrders < ActiveRecord::Migration
-  def change
+  def up
     create_table :orders do |t|
       t.string :name
       t.text :address
@@ -8,5 +8,9 @@ class CreateOrders < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :orders
   end
 end
