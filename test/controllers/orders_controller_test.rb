@@ -45,8 +45,12 @@ class OrdersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update order" do
+  test "should update order and notify user when it ships" do
     patch :update, id: @order, order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type }
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal ["dave@example.com"], mail.to
+    assert_equal "from@example.com", mail[:from].value
+    assert_equal "Pragmatic Store Order Confirmation", mail.subject
     assert_redirected_to @order
   end
 
