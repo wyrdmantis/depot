@@ -3,6 +3,7 @@ class LineItemsController < ApplicationController
 
   before_action :set_cart, only: [:create, :destroy, :decrement]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy, :decrement]
+  skip_before_action :authorize, only: :create
 
   # GET /line_items
   # GET /line_items.json
@@ -76,7 +77,7 @@ class LineItemsController < ApplicationController
       if @line_item.cart.line_items.empty?
         format.html { redirect_to store_url }
         format.js
-      else 
+      else
         format.html { redirect_to(@line_item.cart, notice: "Item removed from your cart.")}
         format.js
       format.json { head :no_content }
