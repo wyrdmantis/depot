@@ -29,6 +29,12 @@ class CartsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "only allow admin to access cart page" do
+    logout
+    get :show, id: @cart
+    assert_redirected_to login_url
+  end
+
   test "should get edit" do
     get :edit, id: @cart
     assert_response :success

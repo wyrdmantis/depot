@@ -3,13 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :authorize
+  # allow creation of admin account if none is set
+  before_action :authorize, unless: lambda { User.no_admins? }
 
   protected
 
   def authorize
-    unless User.find_by(id: session[:user_id])
-      redirect_to login_url, notice: "Please log in"
-    end
+    redirect_to login_url, notice: "Please log in" unless User.find_by(id: session[:user_id])
   end
 end

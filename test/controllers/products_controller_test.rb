@@ -32,6 +32,31 @@ class ProductsControllerTest < ActionController::TestCase
     assert_redirected_to product_path(assigns(:product))
   end
 
+  test "only allow admin to create products" do
+    logout
+    assert_difference('Product.count', 0) do
+      post :create, product: @params
+    end
+  end
+
+  test "only allow admin to edit products" do
+    logout
+    get :show, id: @product
+    assert_redirected_to login_url
+  end
+
+  test "only allow admin to remove products" do
+    logout
+    delete :destroy, id: @product
+    assert_redirected_to login_url
+  end
+
+  test "only allow admin to access products page" do
+    logout
+    get :show, id: @product
+    assert_redirected_to login_url
+  end
+
   test "should show product" do
     get :show, id: @product
     assert_response :success

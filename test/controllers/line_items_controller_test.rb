@@ -17,6 +17,34 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should allow only admin to view line items page" do
+    logout
+    get :index
+    assert_redirected_to login_url
+  end
+
+  test "should allow only admin to edit line item" do
+    logout
+    get :edit, id: @line_item
+    assert_redirected_to login_url
+  end
+
+  test "should allow only admin to update line items page" do
+    logout
+    patch :update, id: @line_item, line_item: { product_id: @line_item.product_id }
+    assert_redirected_to login_url
+  end
+
+  test "should allow only admin to destroy line items" do
+    logout
+    @cart.line_items << @line_item
+    assert_difference('LineItem.count', 0) do
+      delete :destroy, id: @line_item
+    end
+
+    assert_redirected_to login_url
+  end
+
   test "should create line_item" do
     assert_difference('LineItem.count') do
       post :create, product_id: products(:ruby).id

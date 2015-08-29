@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   has_secure_password
   after_destroy :ensure_an_admin_remains
 
+  def self.no_admins?
+    User.count.zero?
+  end
+
   private
 
   def ensure_an_admin_remains
