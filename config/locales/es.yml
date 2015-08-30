@@ -31,6 +31,11 @@ es:
       news:        "Noticias"
       contact:     "Contacto"
 
+  line_items:
+    line_item:
+      remove:    "Eliminas"
+      decrement: "Diminuyes"
+
   carts:
     cart:
       title:       "Carrito de la Compra"

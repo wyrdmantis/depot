@@ -23,6 +23,11 @@ en:
       news:        "News"
       contact:     "Contact"
 
+  line_items:
+    line_item:
+      remove:    "Remove"
+      decrement: "Decrement"
+
   carts:
     cart:
       title:       "Your Cart"
