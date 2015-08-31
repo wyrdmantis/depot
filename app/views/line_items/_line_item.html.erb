@@ -5,7 +5,7 @@
 <% end %>
   <td><%= line_item.product.title %></td>
   <td><%= line_item.quantity %>&times;</td>
-  <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+  <td class="item_price"><%= localize_price(line_item.total_price) %></td>
   <% if @order.nil? %>
   <td class="remove_item"><%= button_to t('.remove'), line_item, method: :delete, remote: true, data: { confirm: "Are you sure?" } %></td>
   <td class="decrement"><%= button_to t('.decrement'), decrement_line_item_path(line_item), method: :post, remote: true %></td>
