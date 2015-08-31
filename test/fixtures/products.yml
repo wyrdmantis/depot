@@ -5,12 +5,14 @@ one:
   description: A long, long, description
   image_url:   MyString
   price:       9.99
+  locale:      en
 
 two:
   title:       MyString
   description: A long, long, description
   image_url:   MyString
   price:       9.99
+  locale:      en
 
 ruby:
   title:       Programming Ruby 2.0
@@ -20,9 +22,11 @@ ruby:
    delivered fast, you should add Ruby to your toolbox.
   price:       40.50
   image_url:   ruby.png
+  locale:      en
 
 invalid_description:
   title:       A book
   description: short
   price:       15.00
   image_url:   foo.jpg
+  locale:      en

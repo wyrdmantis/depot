@@ -7,7 +7,8 @@ class ProductsControllerTest < ActionController::TestCase
       title:       'Lorem Ipsum',
       description: 'Wibbles are fun!',
       image_url:   'lorem.jpg',
-      price:       19.95
+      price:       19.95,
+      locale:      'en'
     }
   end
 
@@ -22,14 +23,6 @@ class ProductsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
-  end
-
-  test "should create product" do
-    assert_difference('Product.count') do
-      post :create, product: @params
-    end
-
-    assert_redirected_to product_path(assigns(:product))
   end
 
   test "only allow admin to create products" do

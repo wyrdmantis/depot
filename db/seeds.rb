@@ -18,7 +18,8 @@ Product.create!(title: 'CoffeeScript',
 	while writing clearer, cleaner, and safer code.
       </p>},
   image_url:   'cs.jpg',
-  price: 36.00)
+  price: 36.00,
+  locale: 'en')
 # . . .
 Product.create!(title: 'Programming Ruby 1.9 & 2.0',
   description:
@@ -28,7 +29,8 @@ Product.create!(title: 'Programming Ruby 1.9 & 2.0',
         you should add Ruby to your toolbox.
       </p>},
   image_url: 'ruby.jpg',
-  price: 49.95)
+  price: 49.95,
+  locale: 'en')
 # . . .
 
 Product.create!(title: 'Rails Test Prescriptions',
@@ -42,7 +44,46 @@ Product.create!(title: 'Rails Test Prescriptions',
         including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
       </p>},
   image_url: 'rtp.jpg',
-  price: 34.95)
+  price: 34.95,
+  locale: 'en')
+
+Product.create!(title: 'CoffeeScript(es)',
+  description:
+    %{<p>
+        CoffeeScript se hace bien JavaScript. Proporciona todas JavaScript de
+        funcionalidad envuelto en una sintaxis más limpia, más sucinto. En el primer
+        libro sobre este lenguaje nuevo y emocionante, CoffeeScript gurú Trevor Burnham
+        muestra cómo aferrarse a toda la potencia y flexibilidad de JavaScript
+        al escribir más claro, más limpio, y el código seguro.
+      </p>},
+  image_url:   'cs.jpg',
+  price: 36.00,
+  locale: 'es')
+
+Product.create!(title: 'Programación Ruby 1.9 & 2.0',
+  description:
+    %{<p>
+        Ruby es el lenguaje dinámico de más rápido crecimiento y más emocionante
+        por ahí. Si usted necesita para obtener los programas de trabajo entregados rápido,
+        debe agregar Ruby a su caja de herramientas.
+      </p>},
+  image_url: 'ruby.jpg',
+  price: 49.95,
+  locale: 'es')
+
+Product.create!(title: 'Rails Recetas de prueba',
+  description:
+    %{<p>
+        <em>Rails Prueba Recetas</em> es una guía completa de las pruebas Rails
+        aplicaciones, cubriendo Test-Driven Development, tanto desde el
+        perspectiva teórica (¿por qué poner a prueba) y desde un punto de vista práctico
+        (cómo probar con eficacia). Cubre las herramientas de prueba Rails núcleo y
+        procedimientos para Rails 2 y Rails 3, y presenta populares complementos,
+        incluyendo pepino, Shoulda, Maquinista, Mocha y rcov.</p>},
+  image_url: 'rtp.jpg',
+  price: 34.95,
+  locale: 'es')
+
 
 PaymentType.create(:name => "Check")
 PaymentType.create(:name => "Credit card")

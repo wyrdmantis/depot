@@ -21,19 +21,7 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal ["has already been taken"], duplicated.errors[:title]
   end
 
-  test "image url must be unique" do
-    dup_url = products(:ruby).image_url
-    product = Product.new(
-      title: "First book",
-      description: "A very long long description",
-      price: 10,
-      image_url: dup_url
-    )
-    assert !product.save
-    assert_equal "has already been taken", product.errors[:image_url].join
-  end
-
-  test "description must be 10 or more characters long" do 
+  test "description must be 10 or more characters long" do
     assert products(:invalid_description).invalid?
   end
 
@@ -41,27 +29,31 @@ class ProductTest < ActiveSupport::TestCase
     assert new_product(title:       "Book",
                        description: "bazbazbazbaz",
                        image_url:   "bom.jpg",
-                       price:       -1).invalid?
+                       price:       -1,
+                       locale:      "en").invalid?
   end
 
   test "product price can't be zero" do
     assert new_product(title:       "Book",
                        description: "bazbazbazbaz",
                        image_url:   "bom.jpg",
-                       price:       0).invalid?
+                       price:       0,
+                       locale:      "en").invalid?
   end
 
   test "product price must be positive" do
     assert new_product(title:       "Book",
                        description: "bazbazbazbaz",
                        image_url:   "bom.jpg",
-                       price:       1).valid?
+                       price:       1,
+                       locale:      "en").valid?
   end
 
   test "product image_url must be a valid url" do
     params       = {:title       => "Book",
                     :description => "Bazbazbazbaz",
-                    :price       => 10}
+                    :price       => 10,
+                    :locale      => "en"}
     valid_urls   = %w(baz.jpg BAZ.JPG foo.png FOO.png foo/baz/bar.jpg
                       ../FOO.GIF)
     invalid_urls = %w(baz foo.gi bar.pnd book book.png.foo ../baz.exe

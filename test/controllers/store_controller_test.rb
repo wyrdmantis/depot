@@ -9,7 +9,7 @@ class StoreControllerTest < ActionController::TestCase
     assert_select '#columns #side a', minimum: 4
     assert_select '#main .entry', 4
     assert_select 'h3', 'A book'
-    assert_select '.price', /\€[,\d]+\.\d\d/
+    assert_select '.price', /\$[,\d]+\.\d\d/
   end
 
   test "markup needed for store.js.coffee is in place" do
